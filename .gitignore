@@ -1,0 +1,10 @@
+datasets/
+
+#etc
+.vscode
+__pycache__
+.DS_Store
+
+# Notebook
+.ipynb_checkpoints/
+colab/.ipynb_checkpoints/
