@@ -17,6 +17,7 @@ class LinearUpsample(nn.Module):
         self._input_size = input_size
         self._s = s
         self.mlp = torch.nn.Linear(input_size, input_size * s)
+        nn.init.xavier_normal_(self.mlp.weight)
         
 
     def forward(self, x, mask):
@@ -25,7 +26,8 @@ class LinearUpsample(nn.Module):
         _x = self.mlp(x)
         _x = _x.reshape(batch_size, sequence_length * self._s, input_size)
 
-        _mask =  mask.expand(batch_size, sequence_length * self._s)
+        _mask = mask.unsqueeze(-1).expand(-1, -1,self._s)
+        _mask = _mask.reshape(batch_size,-1)
 
         assert _x.size(1) == _mask.size(1)
 

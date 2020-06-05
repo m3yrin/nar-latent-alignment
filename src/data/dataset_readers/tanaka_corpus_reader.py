@@ -8,7 +8,7 @@ from allennlp.data import Instance
 from allennlp.data.tokenizers import Token
 from allennlp.data.token_indexers import TokenIndexer, SingleIdTokenIndexer
 from allennlp.data.dataset_readers import DatasetReader
-from allennlp.data.fields import TextField, SequenceLabelField
+from allennlp.data.fields import TextField
 
 logger = logging.getLogger(__name__)
 

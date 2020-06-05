@@ -1,4 +1,6 @@
-datasets/
+datasets/small_parallel_enja
+src/*/__pycache__/
+tmp
 
 #etc
 .vscode
@@ -8,3 +10,4 @@ __pycache__
 # Notebook
 .ipynb_checkpoints/
 colab/.ipynb_checkpoints/
+colab/local.ipynb
