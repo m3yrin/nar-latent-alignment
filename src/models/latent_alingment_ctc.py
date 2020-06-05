@@ -107,8 +107,8 @@ class LatentAignmentCTC(Model):
             if target_tokens and self._bleu:
                 self._bleu(output_dict['predictions'], target_tokens["tokens"])
                 
-                output_dict =  self.decode(output_dict)
-                print(output_dict["predicted_tokens"])
+                #output_dict = self.decode(output_dict)
+                #print(output_dict["predicted_tokens"])
 
         return output_dict
 
