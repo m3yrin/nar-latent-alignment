@@ -8,7 +8,8 @@ Unofficial implementation of "Non-Autoregressive Machine Translation with Latent
     * see detail at https://github.com/odashi/small_parallel_enja
 
 ## Memo
-* CTC model only, Imputer model is under construction.
+* CTC model only
+   * Imputer model is under construction.
 * The CTC model is inspired heavily by Libovicky and Helcl (2018)
    * Jindrich Libovicky and Jindrich Helcl. 2018. End-toEnd Non-Autoregressive Neural Machine Translation with Connectionist Temporal Classification. In EMNLP.
    * https://arxiv.org/abs/1811.04719
