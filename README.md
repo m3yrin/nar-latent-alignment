@@ -16,6 +16,13 @@ Unofficial implementation of "Non-Autoregressive Machine Translation with Latent
 * Distillation is not tested.
 
 ## Examples (CTC)
+0. Download datasets
+```
+$ cd datasets
+$ git clone https://github.com/odashi/small_parallel_enja.git
+```
+
+
 1. training
 ```
 $ allennlp train -f --include-package src -s tmp configs/ctc.jsonnet
