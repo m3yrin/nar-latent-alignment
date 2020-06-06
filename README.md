@@ -16,8 +16,6 @@ Unofficial implementation of "Non-Autoregressive Machine Translation with Latent
 * Distillation is not tested.
 
 ## TODO
-* Change base network to BidirectionalLanguageModelTransformer
-   * StackedSelfAttentionEncoder is uni-directional..
 * Imputer model
 * Comparison with AR model.
 
