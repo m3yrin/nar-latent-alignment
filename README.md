@@ -46,5 +46,5 @@ $ allennlp evaluate --output-file tmp/output_test.json --include-package src tmp
         ```
     2. predict
         ```
-        $ allennlp predict --output-file tmp/output_pred.json --include-package src --predictor tanaka_corpus_predictor  tmp/model.tar.gz datasets/test_json.ja
+        $ allennlp predict --output-file tmp/output_pred.json --include-package src --predictor small_parallel_enja_predictor  tmp/model.tar.gz datasets/test.ja.json
         ```
