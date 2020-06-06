@@ -7,23 +7,21 @@
 local embedding_dim = 128;
 
 # Stacked self attention
-local hidden_dim = 256;
-local feedforward_hidden_dim = 1024;
-local num_layers = 6;
-local num_attention_heads = 4;
-
+local hidden_dim = 128;
+#local feedforward_hidden_dim = 256;
+local num_layers = 8;
+#local num_attention_heads = 8;
 
 local num_epochs = 100;
-local batch_size = 64;
-local learning_rate = 0.001;
+local batch_size = 128;
+local learning_rate = 0.0005;
 
 local SPECIAL_BLANK_TOKEN = "@@BLANK@@";
 local min_count = 2;
-local patience = 5;
+local patience = 10;
 
 # if you don't use cuda, cuda_device=-1
 local cuda_device=0;
-
 
 {
     "dataset_reader": {
@@ -43,14 +41,20 @@ local cuda_device=0;
             }
         },
         "net": {
-            "type": "stacked_self_attention",
+            "type": "bidirectional_language_model_transformer",
             "input_dim": embedding_dim,
             "hidden_dim": hidden_dim,
-            "projection_dim": hidden_dim,
-            "feedforward_hidden_dim": feedforward_hidden_dim,
             "num_layers": num_layers,
-            "num_attention_heads": num_attention_heads
         }
+        #"net": {
+        #    "type": "stacked_self_attention",
+        #    "input_dim": embedding_dim,
+        #    "hidden_dim": hidden_dim,
+        #    "projection_dim": hidden_dim,
+        #    "feedforward_hidden_dim": feedforward_hidden_dim,
+        #    "num_layers": num_layers,
+        #    "num_attention_heads": num_attention_heads
+        #}
     },
     "iterator": {
         "type": "bucket",
@@ -68,13 +72,18 @@ local cuda_device=0;
             "lr": learning_rate
         },
         "patience": patience,
+        "validation_metric": "+BLEU",
         "num_epochs": num_epochs,
-        "cuda_device": cuda_device
+        "cuda_device": cuda_device,
+        "learning_rate_scheduler": {
+            "type": "exponential",
+            "gamma": 0.98
+        },
     },
     "vocabulary": {
         "min_count": {
             "source_tokens": min_count,
-            "target_tokens": min_count
+            "target_tokens": 1
         },
         "tokens_to_add": {
             "target_tokens": [
