@@ -4,13 +4,13 @@
 # 8 attention heads per layer. We use 0.1 dropout
 # for regularization. 
 
-local embedding_dim = 256;
+local embedding_dim = 128;
 
 # Stacked self attention
-local hidden_dim = 512;
-local feedforward_hidden_dim = 2048;
-local num_layers = 12;
-local num_attention_heads = 8;
+local hidden_dim = 256;
+local feedforward_hidden_dim = 1024;
+local num_layers = 6;
+local num_attention_heads = 4;
 
 
 local num_epochs = 100;
@@ -19,7 +19,7 @@ local learning_rate = 0.001;
 
 local SPECIAL_BLANK_TOKEN = "@@BLANK@@";
 local min_count = 2;
-local patience = 2;
+local patience = 5;
 
 # if you don't use cuda, cuda_device=-1
 local cuda_device=0;
