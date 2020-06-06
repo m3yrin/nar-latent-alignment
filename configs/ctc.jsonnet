@@ -8,12 +8,12 @@ local embedding_dim = 256;
 
 # Stacked self attention
 local hidden_dim = 512;
-local feedforward_hidden_dim = 1024;
-local num_layers = 6;
-local num_attention_heads = 4;
+local feedforward_hidden_dim = 2048;
+local num_layers = 12;
+local num_attention_heads = 8;
 
 
-local num_epochs = 5;
+local num_epochs = 100;
 local batch_size = 64;
 local learning_rate = 0.001;
 
