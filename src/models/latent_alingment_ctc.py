@@ -180,9 +180,10 @@ class LatentAignmentCTC(Model):
             ]
             all_predicted_tokens.append(predicted_tokens)
         
-        output_dict["predicted_tokens"] = all_predicted_tokens
-
-        return output_dict
+        out = {"predicted_tokens": all_predicted_tokens}
+        return out
+        #output_dict["predicted_tokens"] = all_predicted_tokens
+        #return output_dict
 
     @overrides
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:

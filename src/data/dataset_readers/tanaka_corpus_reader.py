@@ -41,7 +41,6 @@ class TanakaCorpusReader(DatasetReader):
 
     @overrides
     def _read(self, data_prefix: str) -> Iterator[Instance]:
-        #file open
 
         if self.direction == "ja-en":
             src_path = data_prefix + ".ja"
@@ -69,3 +68,8 @@ class TanakaCorpusReader(DatasetReader):
                                             [Token(w) for w in words_tgt])
             else:
                 yield self.text_to_instance([Token(w) for w in words_src])
+
+        # end of _read, close i/o
+        f_src.close()
+        if f_tgt:
+            f_src.close()
