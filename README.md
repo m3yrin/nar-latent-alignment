@@ -1,12 +1,20 @@
 # nar-latent-alignment [WIP]
 Unofficial implementation of "Non-Autoregressive Machine Translation with Latent Alignments" https://arxiv.org/abs/2004.07437
 
+
 * Built on AllenNLP (0.9.0)
-* Dataset
-    * a small parallel corpus for English-Japanese translation task provided by @odashi
+* Dataset (En-Ja)
+    * A small parallel corpus for English-Japanese translation task provided by @odashi
     * see detail at https://github.com/odashi/small_parallel_enja
 
-* Examples
+## Memo
+* CTC model only, Imputer model is under construction.
+* The CTC model is inspired heavily by Libovicky and Helcl (2018)
+   * Jindrich Libovicky and Jindrich Helcl. 2018. End-toEnd Non-Autoregressive Neural Machine Translation with Connectionist Temporal Classification. In EMNLP.
+   * https://arxiv.org/abs/1811.04719
+* Distillation is not tested.
+
+## Examples (CTC)
 1. training
 ```
 $ allennlp train -f --include-package src -s tmp configs/ctc.jsonnet
