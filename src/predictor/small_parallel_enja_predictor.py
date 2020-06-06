@@ -7,8 +7,8 @@ from allennlp.predictors.predictor import Predictor
 from allennlp.data.tokenizers import Token
 
 
-@Predictor.register('tanaka_corpus_predictor')
-class TanakaCorpusPredictor(Predictor):
+@Predictor.register('small_parallel_enja_predictor')
+class SmallParallelEnJaPredictor(Predictor):
     def predict(self, source: str) -> JsonDict:
         return self.predict_json({"source" : source})
 

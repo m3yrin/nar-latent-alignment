@@ -12,8 +12,8 @@ from allennlp.data.fields import TextField
 
 logger = logging.getLogger(__name__)
 
-@DatasetReader.register("tanaka_corpus_reader")
-class TanakaCorpusReader(DatasetReader):
+@DatasetReader.register("small_parallel_enja_reader")
+class SmallParallelEnJaReader(DatasetReader):
     def __init__(self, 
                  direction: str = "ja-en",
                  source_token_indexers: Dict[str, TokenIndexer] = None,
@@ -45,6 +45,9 @@ class TanakaCorpusReader(DatasetReader):
         if self.direction == "ja-en":
             src_path = data_prefix + ".ja"
             tgt_path = data_prefix + ".en"
+        elif self.direction == "en-ja":
+            src_path = data_prefix + ".en"
+            tgt_path = data_prefix + ".ja"
         else:
             raise NotImplementedError()
 
