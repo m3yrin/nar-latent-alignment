@@ -60,6 +60,7 @@ local learning_rate_ar = 0.001;
             },
             "max_decoding_steps": max_decoding_steps,
             "target_embedder": {
+                "vocab_namespace": "target_tokens",
                 "embedding_dim": target_embedding_dim
             },
             "tensor_based_metric": {
