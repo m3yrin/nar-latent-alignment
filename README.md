@@ -17,7 +17,6 @@ Unofficial implementation of "Non-Autoregressive Machine Translation with Latent
 
 ## TODO
 * Imputer model
-* Comparison with AR model.
 
 ## Examples (CTC)
 0. Download datasets
@@ -25,7 +24,6 @@ Unofficial implementation of "Non-Autoregressive Machine Translation with Latent
 $ cd datasets
 $ git clone https://github.com/odashi/small_parallel_enja.git
 ```
-
 
 1. training
 ```
