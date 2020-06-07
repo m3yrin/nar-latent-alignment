@@ -1,33 +1,32 @@
-# https://arxiv.org/pdf/2004.07437.pdf
-# Our models consists of 12 self-attention
-# layers, with 512 hidden size, 2048 filter size, and
-# 8 attention heads per layer. We use 0.1 dropout
-# for regularization. 
 
-local embedding_dim = 128;
+# common settings
+local COMMON = import 'common.jsonnet';
 
-# Stacked self attention
-local attention_hidden_dim = 128;
-local feedforward_hidden_dim = 2048;
-local num_layers = 12;
+local direction = COMMON['direction'];
+local train_data_path = COMMON['train_data_path'];
+local validation_data_path = COMMON['validation_data_path'];
 
-local num_epochs = 100;
-local batch_size = 256;
-local learning_rate = 0.001;
+local embedding_dim = COMMON['embedding_dim'];
+local feedforward_hidden_dim = COMMON['feedforward_hidden_dim'];
+local num_layers = COMMON['num_layers'];
+local num_epochs = COMMON['num_epochs'];
+local batch_size = COMMON['batch_size'];
+local patience = COMMON['patience'];
+local min_count = COMMON['min_count'];
+local cuda_device = COMMON['cuda_device'];
 
+# for CTC
+local learning_rate_ctc = 0.001;
 local SPECIAL_BLANK_TOKEN = "@@BLANK@@";
-local min_count = 2;
-local patience = 10;
-
-# if you don't use cuda, cuda_device=-1
-local cuda_device = 0;
 
 {
     "dataset_reader": {
-        "type": "small_parallel_enja_reader"
+      "type": "small_parallel_enja_reader",
+      "direction" : direction,
+      "add_start_end_tokens" : false, # the model don't use BOS/EOS for now.
     },
-    "train_data_path": "datasets/small_parallel_enja/train",
-    "validation_data_path": "datasets/small_parallel_enja/dev",
+    "train_data_path": train_data_path,
+    "validation_data_path": validation_data_path,
     "model": {
         "type": "latent_alignment_ctc",
         "source_embedder": {
@@ -41,7 +40,7 @@ local cuda_device = 0;
         },
         "net": {
             "type": "bidirectional_language_model_transformer",
-            "input_dim": attention_hidden_dim,
+            "input_dim": embedding_dim,
             "hidden_dim": feedforward_hidden_dim,
             "num_layers": num_layers,
         }
@@ -68,7 +67,7 @@ local cuda_device = 0;
     "trainer": {
         "optimizer": {
             "type": "adam",
-            "lr": learning_rate
+            "lr": learning_rate_ctc
         },
         "patience": patience,
         "validation_metric": "+BLEU",
