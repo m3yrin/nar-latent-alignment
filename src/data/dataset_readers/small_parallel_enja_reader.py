@@ -9,6 +9,7 @@ from allennlp.data.tokenizers import Token
 from allennlp.data.token_indexers import TokenIndexer, SingleIdTokenIndexer
 from allennlp.data.dataset_readers import DatasetReader
 from allennlp.data.fields import TextField
+from allennlp.common.util import START_SYMBOL, END_SYMBOL
 
 logger = logging.getLogger(__name__)
 
@@ -18,18 +19,31 @@ class SmallParallelEnJaReader(DatasetReader):
                  direction: str = "ja-en",
                  source_token_indexers: Dict[str, TokenIndexer] = None,
                  target_token_indexers: Dict[str, TokenIndexer] = None, 
+                 add_start_end_tokens: bool = False,
                  lazy: bool = False) -> None:
         
         super().__init__(lazy)
         self.direction = direction
         self.source_token_indexers = source_token_indexers or {"tokens": SingleIdTokenIndexer()}
         self.target_token_indexers = target_token_indexers or {"tokens": SingleIdTokenIndexer(namespace='target_tokens')}
+        self.add_start_end_tokens = add_start_end_tokens
 
     @overrides
     def text_to_instance(self, 
                          tokens_src: List[Token],
                          tokens_tgt: List[Token] = None) -> Instance:
         
+
+        if self.add_start_end_tokens:
+            tokens_src.insert(0, Token(START_SYMBOL))
+            tokens_src.append(Token(END_SYMBOL))
+
+            if tokens_tgt:
+                tokens_tgt.insert(0, Token(START_SYMBOL))
+                tokens_tgt.append(Token(END_SYMBOL))
+
+
+
         field_src = TextField(tokens_src, self.source_token_indexers)
         fields = {"source_tokens": field_src}
         
