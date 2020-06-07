@@ -10,7 +10,7 @@ local cuda_device = 0;
 {
     "direction" : "ja-en",
     "train_data_path": "datasets/small_parallel_enja/train",
-    "validation_data_path": "datasets/small_parallel_enja/test",
+    "validation_data_path": "datasets/small_parallel_enja/dev",
 
     "embedding_dim" : 128,
     "feedforward_hidden_dim" : 2048,
