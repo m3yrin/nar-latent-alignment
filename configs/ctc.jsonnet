@@ -23,7 +23,7 @@ local SPECIAL_BLANK_TOKEN = "@@BLANK@@";
     "dataset_reader": {
       "type": "small_parallel_enja_reader",
       "direction" : direction,
-      "add_start_end_tokens" : false, # the model don't use BOS/EOS for now.
+      "add_start_end_tokens" : false, # the model doesn't use BOS/EOS for now.
     },
     "train_data_path": train_data_path,
     "validation_data_path": validation_data_path,
