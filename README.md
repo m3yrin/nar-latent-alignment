@@ -18,7 +18,8 @@ Unofficial implementation of "Non-Autoregressive Machine Translation with Latent
 * Distillation is not tested.
 
 ## TODO
-* Imputer model
+* Add comments to source codes..
+* Understand and build the Imputer model.
 
 ## Notebook for Google Collaboratory
 https://colab.research.google.com/github/m3yrin/nar-latent-alignment/blob/master/colab/experiment.ipynb
