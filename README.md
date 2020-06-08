@@ -1,6 +1,9 @@
 # nar-latent-alignment [WIP]
 Unofficial implementation of "Non-Autoregressive Machine Translation with Latent Alignments" https://arxiv.org/abs/2004.07437
 
+![https://colab.research.google.com/github/m3yrin/nar-latent-alignment/blob/master/colab/experiment.ipynb
+](https://colab.research.google.com/assets/colab-badge.svg)  
+
 
 * Built on AllenNLP (0.9.0)
 * Dataset (En-Ja)
@@ -17,6 +20,9 @@ Unofficial implementation of "Non-Autoregressive Machine Translation with Latent
 
 ## TODO
 * Imputer model
+
+## Notebook for Google Collaboratory
+https://colab.research.google.com/github/m3yrin/nar-latent-alignment/blob/master/colab/experiment.ipynb
 
 ## Examples (CTC)
 0. Download datasets
