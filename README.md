@@ -1,8 +1,7 @@
 # nar-latent-alignment [WIP]
 Unofficial implementation of "Non-Autoregressive Machine Translation with Latent Alignments" https://arxiv.org/abs/2004.07437
 
-![https://colab.research.google.com/github/m3yrin/nar-latent-alignment/blob/master/colab/experiment.ipynb
-](https://colab.research.google.com/assets/colab-badge.svg)  
+<a href="https://colab.research.google.com/github/m3yrin/nar-latent-alignment/blob/master/colab/experiment.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> 
 
 
 * Built on AllenNLP (0.9.0)
