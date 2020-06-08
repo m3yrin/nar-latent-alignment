@@ -64,7 +64,12 @@ local learning_rate_ar = 0.001;
                 "embedding_dim": target_embedding_dim
             },
             "tensor_based_metric": {
-                "type": "bleu"
+                "type": "bleu",
+                # "exclude_indices": [0, 2, 3], 
+                #   as is in https://github.com/allenai/allennlp/blob/052353ed62e3a54fd7b39a660e65fc5dd2f91c7d/allennlp/models/encoder_decoders/simple_seq2seq.py#L95
+                #   assuming {0: '@@PADDING@@',1: '@@UNKNOWN@@',2: '@start@',3: '@end@', ...}
+                #   I don't know how to pass these indices from config like "vocab.get_token_index(self.vocab._padding_token, self._target_namespace)"
+                "exclude_indices": [0, 2, 3], 
             }
         }
     },
